@@ -25,6 +25,8 @@ import com.example.musicstreaming.viewmodel.PlaylistViewModel
 import com.example.musicstreaming.viewmodel.SongViewModel
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
+import java.io.File
+
 
 
 class MainActivity : ComponentActivity() {
@@ -153,5 +155,14 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    private fun saveSongsToJson(songs: List<Song>) {
+        val gson = Gson()
+        val json = gson.toJson(songs)
+
+        val file = File(filesDir, "songs.json")
+        file.writeText(json)
+
+        Log.d("MainActivity", "Saved ${songs.size} songs to songs.json")
+    }
 }
 

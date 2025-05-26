@@ -7,10 +7,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.musicstreaming.ui.components.SongItem
 import com.example.musicstreaming.viewmodel.SongViewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.foundation.lazy.items
+import com.example.musicstreaming.ui.components.SongCard
 
 
 @Composable
@@ -25,10 +25,11 @@ fun LibraryScreen(songViewModel: SongViewModel) {
         } else {
             LazyColumn {
                 items(songs, key = { it.id }) { song ->
-                    SongItem(song = song, onClick = {
-                        // TODO: Play song or navigate to details
-                    })
+                    SongCard(song = song) {
+                        // TODO: handle click (e.g., navigate to player or play the song)
+                    }
                 }
+
             }
         }
     }
